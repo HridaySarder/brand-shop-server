@@ -13,9 +13,6 @@ const port = process.env.PORT || 5000;
 app.use(cors())
 app.use(express.json())
 
-// eTechnology
-// At4PZlbzTVxAz5fV
-
 
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.gv4wyxg.mongodb.net/?retryWrites=true&w=majority`;
@@ -36,6 +33,11 @@ async function run() {
 
     const productCollection = client.db('productDB').collection('product');
 
+app.get('/product',async(req,res) => {
+  const cursor = productCollection.find();
+  const result = await cursor.toArray();
+  res.send(result)
+})
 
 app.post('/product', async(req,res) => {
   const newProduct = req.body;
