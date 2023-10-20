@@ -58,7 +58,7 @@ run().catch(console.dir);
 
 
 app.get('/',(req,res) => {
-  res.send('E & T server is running')
+  res.send('SmileShop server is running')
 })
 
 app.listen(port,() => {
